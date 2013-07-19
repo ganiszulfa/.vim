@@ -20,7 +20,6 @@ let mapleader = ","
 
 " disable the of yanking after delete and change
 nnoremap c "_c
-nnoremap d "_d
 
 " make r become delete x words/till end of line and change with the latest
 " register, ugly hacks!
@@ -30,6 +29,13 @@ nnoremap r3w "_d3wP
 nnoremap r4w "_d4wP
 nnoremap r5w "_d5wP
 nnoremap r$ "_d$p
+
+" folding code
+set foldmethod=indent
+set foldmethod=indent
+set foldlevel=99
+nnoremap <space> za
+vnoremap <space> zf
 
 " disable arrow keys
 nnoremap <up> <nop>
@@ -102,32 +108,36 @@ set hlsearch
 set incsearch
 set smartcase
 set ignorecase
+
 " Show whitespace
-" MUST be inserted BEFORE the colorscheme command
 " autocmd ColorScheme * highlight ExtraWhitespace ctermbg=red guibg=red
 " au InsertLeave * match ExtraWhitespace /\s\+$/
 
-
 " Color scheme
 " mkdir -p ~/.vim/colors && cd ~/.vim/colors
-" wget -O wombat256mod.vim http://www.vim.org/scripts/download_script.php?src_id=13400
-" set t_Co=200
-" color wombat256mod
+set t_Co=256
+colorscheme desert
 
-" Settings for vim-powerline
-" cd ~/.vim/bundle
-" git clone git://github.com/Lokaltog/vim-powerline.git
+" set color for airline
 set laststatus=2
-
 
 " Settings for ctrlp
 " cd ~/.vim/bundle
 " git clone https://github.com/kien/ctrlp.vim.git
-let g:ctrlp_max_height = 30
+let g:ctrlp_max_height=10
 set wildignore+=*.pyc
 set wildignore+=*_build/*
+set wildignore+=*build/*
 set wildignore+=*/coverage/*
 
+" settings for flake and pep8
+let g:pyflakes_use_quick_fix=0
+let g:pep8_map='<leader>8'
+
+au FileType python set omnifunc=pythoncomplete#Complete
+let g:SuperTabDefaultCompletionType = 'context'
+
+" imap <buffer><Tab> <M-/>
 " map <Leader>g :call RopeGotoDefinition()<CR>
 " let ropevim_enable_shortcuts = 1
 " let g:pymode_rope_goto_def_newwin = "vnew"
@@ -144,7 +154,6 @@ set wildignore+=*/coverage/*
 " behave mswin
 " 
 " set cursorline
-" set encoding=utf-8
 " set showcmd
 " 
 " set synmaxcol=0
