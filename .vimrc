@@ -1,6 +1,8 @@
 " autoload vimrc
 autocmd! bufwritepost .vimrc source %
 
+colorscheme torte
+
 " pathogen load
 filetype off
 call pathogen#infect()
@@ -15,7 +17,19 @@ let mapleader = ","
 """""""""""""""""""""""""""""
 """""""""""""""""""""""""""""
 """""""""""""""""""""""""""""
-"""""""""""""""""""""""""""""
+
+" disable the of yanking after delete and change
+nnoremap c "_c
+nnoremap d "_d
+
+" make r become delete x words/till end of line and change with the latest
+" register, ugly hacks!
+nnoremap rw "_dwP
+nnoremap r2w "_d2wP
+nnoremap r3w "_d3wP
+nnoremap r4w "_d4wP
+nnoremap r5w "_d5wP
+nnoremap r$ "_d$p
 
 " disable arrow keys
 nnoremap <up> <nop>
@@ -32,7 +46,7 @@ noremap <C-Z> :update<CR><Esc>
 vnoremap <C-Z> <C-C>:update<CR><Esc>
 inoremap <C-Z> <C-O>:update<CR><Esc>
 
-" extend the history hahahakk
+" extend the history 
 set history=700
 set undolevels=700
 
@@ -99,7 +113,6 @@ set ignorecase
 " wget -O wombat256mod.vim http://www.vim.org/scripts/download_script.php?src_id=13400
 " set t_Co=200
 " color wombat256mod
-
 
 " Settings for vim-powerline
 " cd ~/.vim/bundle
