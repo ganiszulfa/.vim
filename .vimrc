@@ -1,8 +1,6 @@
 " autoload vimrc
 autocmd! bufwritepost .vimrc source %
 
-colorscheme torte
-
 " pathogen load
 filetype off
 call pathogen#infect()
@@ -13,12 +11,25 @@ syntax on
 " Remap leader to comma 
 let mapleader = ","
 
-"""""""""""""""""""""""""""""
-"""""""""""""""""""""""""""""
-"""""""""""""""""""""""""""""
-"""""""""""""""""""""""""""""
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-" disable the of yanking after delete and change
+" Return to normal mode on FocustLost
+au FocusLost * call feedkeys("\<C-\>\<C-n>") 
+
+" select all
+map <Leader>a ggVG
+
+" Keep search pattern at the center of the screen.
+nnoremap <silent> n nzz
+nnoremap <silent> N Nzz
+nnoremap <silent> * *zz
+nnoremap <silent> # #zz
+nnoremap <silent> g* g*zz
+
+" reset search highlight
+noremap <silent>// :nohls<CR>
+
+" disable the of yanking after change
 nnoremap c "_c
 
 " make r become delete x words/till end of line and change with the latest
@@ -31,7 +42,6 @@ nnoremap r5w "_d5wP
 nnoremap r$ "_d$p
 
 " folding code
-set foldmethod=indent
 set foldmethod=indent
 set foldlevel=99
 nnoremap <space> za
@@ -100,8 +110,11 @@ set smarttab
 set nowrap " dont automatically wrap on load
 
 " set a vertical line in the screen
-" set colorcolumn=80
-" highligh ColorColumn ctermbg=233
+if exists('+colorcolumn')
+    set colorcolumn=81
+else
+    au BufWinEnter * let w:m2=matchadd('ErrorMsg', '\%>80v.\+', -1)
+endif
 
 " Make search insensitive
 set hlsearch
@@ -110,18 +123,19 @@ set smartcase
 set ignorecase
 
 " Show whitespace
-" autocmd ColorScheme * highlight ExtraWhitespace ctermbg=red guibg=red
-" au InsertLeave * match ExtraWhitespace /\s\+$/
+autocmd ColorScheme * highlight ExtraWhitespace ctermbg=red guibg=red
+au InsertLeave * match ExtraWhitespace /\s\+$/
 
 " Color scheme
-" mkdir -p ~/.vim/colors && cd ~/.vim/colors
 set t_Co=256
 colorscheme desert
 
-" set color for airline
+" set airline
 set laststatus=2
+let g:airline_left_sep='>'
+let g:airline_theme='light'
 
-" Settings for ctrlp
+" settings for ctrlp
 " cd ~/.vim/bundle
 " git clone https://github.com/kien/ctrlp.vim.git
 let g:ctrlp_max_height=10
@@ -136,8 +150,9 @@ let g:pep8_map='<leader>8'
 
 au FileType python set omnifunc=pythoncomplete#Complete
 let g:SuperTabDefaultCompletionType = 'context'
-
+    
 " imap <buffer><Tab> <M-/>
+"
 " map <Leader>g :call RopeGotoDefinition()<CR>
 " let ropevim_enable_shortcuts = 1
 " let g:pymode_rope_goto_def_newwin = "vnew"
