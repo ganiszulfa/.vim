@@ -128,12 +128,12 @@ au InsertLeave * match ExtraWhitespace /\s\+$/
 
 " Color scheme
 set t_Co=256
-colorscheme desert
+colorscheme wombat256mod
 
 " set airline
 set laststatus=2
 let g:airline_left_sep='>'
-let g:airline_theme='light'
+let g:airline_theme='wombat'
 
 " settings for ctrlp
 " cd ~/.vim/bundle
