@@ -8,7 +8,7 @@ call pathogen#helptags()
 filetype plugin indent on
 syntax on
 
-" Remap leader to comma
+" Remap leader to comma 
 let mapleader = ","
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -191,3 +191,16 @@ set tags=./tags;/
 set so=3
 "
 " set diffexpr=MyDiff()
+" 
+" set cursorline
+" set showcmd
+" 
+" set synmaxcol=0
+" 
+" set backspace=indent,eol,start
+" 
+" set cmdheight=2
+" set so=7
+" 
+" set diffexpr=MyDiff()
+" 
