@@ -20,11 +20,18 @@ au FocusLost * call feedkeys("\<C-\>\<C-n>")
 map <Leader>a ggVG
 
 " Keep search pattern at the center of the screen.
-nnoremap <silent> n nzz
-nnoremap <silent> N Nzz
-nnoremap <silent> * *zz
-nnoremap <silent> # #zz
-nnoremap <silent> g* g*zz
+"nnoremap <silent> n nzz
+"nnoremap <silent> N Nzz
+"nnoremap <silent> * *Nzz
+"nnoremap <silent> # #zz
+"nnoremap <silent> g* g*zz
+
+" Keep search pattern at the center of the screen.
+nnoremap <silent> n n
+nnoremap <silent> N N
+nnoremap <silent> * *N
+nnoremap <silent> # #n
+nnoremap <silent> g* g*
 
 " reset search highlight
 noremap <silent>// :nohls<CR>
@@ -116,11 +123,11 @@ set smarttab
 set nowrap " dont automatically wrap on load
 
 " set a vertical line in the screen
-if exists('+colorcolumn')
-    set colorcolumn=81
-else
-    au BufWinEnter * let w:m2=matchadd('ErrorMsg', '\%>80v.\+', -1)
-endif
+" if exists('+colorcolumn')
+    " set colorcolumn=81
+" else
+    " au BufWinEnter * let w:m2=matchadd('ErrorMsg', '\%>80v.\+', -1)
+" endif
 
 " Make search insensitive
 set hlsearch
@@ -129,8 +136,16 @@ set smartcase
 set ignorecase
 
 " Show whitespace
-autocmd ColorScheme * highlight ExtraWhitespace ctermbg=red guibg=red
-au InsertLeave * match ExtraWhitespace /\s\+$/
+" autocmd ColorScheme * highlight ExtraWhitespace ctermbg=red guibg=red
+" au InsertLeave * match ExtraWhitespace /\s\+$/
+
+" Change Color when entering Insert Mode
+autocmd CmdwinEnter * highlight  CursorLine ctermbg=Red ctermfg=Red
+
+" " Revert Color to default when leaving Insert Mode
+autocmd CmdwinLeave * highlight  CursorLine ctermbg=Green ctermfg=None
+
+
 
 " Color scheme
 set t_Co=256
