@@ -41,11 +41,11 @@ nnoremap c "_c
 
 " make r become delete x words/till end of line and change with the latest
 " register, ugly hacks!
-nnoremap rw "_dwP
-nnoremap r2w "_d2wP
-nnoremap r3w "_d3wP
-nnoremap r4w "_d4wP
-nnoremap r5w "_d5wP
+nnoremap rw "_dwi<space><esc>p
+nnoremap r2w "_d2wp
+nnoremap r3w "_d3wp
+nnoremap r4w "_d4wp
+nnoremap r5w "_d5wp
 nnoremap r$ "_d$p
 
 " highlighting current line
@@ -59,6 +59,8 @@ set foldmethod=indent
 set foldlevel=99
 nnoremap <space> za
 vnoremap <space> zf
+" set folding code for enter
+nnoremap <CR> za
 
 " disable arrow keys
 nnoremap <up> <nop>
@@ -75,6 +77,11 @@ noremap <C-Z> :update<CR><Esc>
 vnoremap <C-Z> <C-C>:update<CR><Esc>
 inoremap <C-Z> <C-O>:update<CR><Esc>
 
+" going up and down every 5 lines (more than 
+" that is too much for me)
+noremap <C-U> kkkkk
+noremap <C-D> jjjjj
+
 " extend the history
 set history=700
 set undolevels=700
@@ -84,8 +91,8 @@ set pastetoggle=<F2>
 set clipboard=unnamed
 
 " Map kj to ESC. kj == moving forward and backward
-inoremap kj  <ESC>
-inoremap jk  <ESC>
+inoremap kj  <ESC>l
+inoremap jk  <ESC>l
 
 " Reselect visual block after indent/outdent 
 vnoremap < <gv
@@ -140,10 +147,10 @@ set ignorecase
 " au InsertLeave * match ExtraWhitespace /\s\+$/
 
 " Change Color when entering Insert Mode
-autocmd CmdwinEnter * highlight  CursorLine ctermbg=Red ctermfg=Red
+" autocmd CmdwinEnter * highlight  CursorLine ctermbg=Red ctermfg=Red
 
 " " Revert Color to default when leaving Insert Mode
-autocmd CmdwinLeave * highlight  CursorLine ctermbg=Green ctermfg=None
+" autocmd CmdwinLeave * highlight  CursorLine ctermbg=Green ctermfg=None
 
 
 
@@ -174,6 +181,7 @@ let g:SuperTabDefaultCompletionType = 'context'
 
 " fixing nerd tree for mac
 let g:NERDTreeDirArrows=0
+let NERDTreeIgnore = ['\.o$']
 
 " look for tags in current folder
 " or move to the root until found
@@ -203,7 +211,8 @@ set tags=./tags;/
 " set backspace=indent,eol,start
 "
 " set cmdheight=2
-set so=3
+" set the minimum line between the cursor and the top/bottom
+set so=1
 "
 " set diffexpr=MyDiff()
 " 
@@ -214,8 +223,6 @@ set so=3
 " 
 " set backspace=indent,eol,start
 " 
-" set cmdheight=2
-" set so=7
 " 
 " set diffexpr=MyDiff()
 " 
