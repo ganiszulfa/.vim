@@ -1,4 +1,6 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =2
+let g:netrw_dirhist_cnt =4
 let g:netrw_dirhist_1='/home/ganis/work/Odroid7/uboot'
 let g:netrw_dirhist_2='/home/ganis/work/svn/vimo_s/include/asm/smdk5250'
+let g:netrw_dirhist_3='/home/ganis/work/svn/vimo_s'
+let g:netrw_dirhist_4='/home/ganis/work/vimo_s'

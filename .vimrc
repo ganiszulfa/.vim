@@ -156,7 +156,10 @@ set ignorecase
 
 " Color scheme
 set t_Co=256
-colorscheme wombat256mod
+" colorscheme wombat256mod
+set background=dark
+let g:solarized_termcolors=256
+colorscheme solarized
 
 " set airline
 set laststatus=2
