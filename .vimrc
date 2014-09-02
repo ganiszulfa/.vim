@@ -57,6 +57,7 @@ vnoremap <C-]> <Esc>:new %<CR>gvg<C-]>
 " folding code
 set foldmethod=indent
 set foldlevel=99
+" set foldnestmax=1
 nnoremap <space> za
 vnoremap <space> zf
 " set folding code for enter
@@ -77,10 +78,10 @@ noremap <C-Z> :update<CR><Esc>
 vnoremap <C-Z> <C-C>:update<CR><Esc>
 inoremap <C-Z> <C-O>:update<CR><Esc>
 
-" going up and down every 5 lines (more than 
+" going up and down every 7 lines (more than 
 " that is too much for me)
-noremap <C-U> kkkkk
-noremap <C-D> jjjjj
+noremap <C-U> 7k
+noremap <C-D> 7j
 
 " extend the history
 set history=700
@@ -128,7 +129,7 @@ set ai
 set si
 set smarttab
 set nowrap " dont automatically wrap on load
-
+set nowrapscan        " do not wrap around
 " set a vertical line in the screen
 " if exists('+colorcolumn')
     " set colorcolumn=81
@@ -155,11 +156,9 @@ set ignorecase
 
 
 " Color scheme
-set t_Co=256
-" colorscheme wombat256mod
-set background=dark
+" set t_Co=256
+colorscheme wombat256mod
 let g:solarized_termcolors=256
-colorscheme solarized
 
 " set airline
 set laststatus=2
@@ -229,3 +228,9 @@ set so=1
 " 
 " set diffexpr=MyDiff()
 " 
+
+" ARM ASM
+let asmsyntax='armasm' 
+let filetype_inc='armasm'
+au BufNewFile,BufRead *.S setlocal ft=armasm
+
