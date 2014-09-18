@@ -36,7 +36,7 @@ nnoremap <silent> g* g*
 " reset search highlight
 noremap <silent>// :nohls<CR>
 
-" disable the of yanking after change
+" disable the of yanking after change, i just don't like it
 nnoremap c "_c
 
 " make r become delete x words/till end of line and change with the latest
@@ -50,9 +50,6 @@ nnoremap r$ "_d$p
 
 " highlighting current line
 set cursorline
-
-nnoremap <C-]> :new %<CR>g<C-]>
-vnoremap <C-]> <Esc>:new %<CR>gvg<C-]>
 
 " folding code
 set foldmethod=indent
@@ -112,10 +109,11 @@ noremap <F1> <Esc>
 cmap w!! %!sudo tee > /dev/null %
 
 " setting for python, we use spaces instead of TAB
+" changed to linux standard
 set tabstop=8
 set expandtab
-set shiftwidth=4
-set softtabstop=4
+set shiftwidth=8
+set softtabstop=8
 
 " Disable stupid backup and swap files
 " use git anyway
@@ -158,7 +156,7 @@ set ignorecase
 " Color scheme
 " set t_Co=256
 colorscheme wombat256mod
-let g:solarized_termcolors=256
+" let g:solarized_termcolors=256
 
 " set airline
 set laststatus=2
@@ -169,10 +167,12 @@ let g:airline_theme='molokai'
 " cd ~/.vim/bundle
 " git clone https://github.com/kien/ctrlp.vim.git
 let g:ctrlp_max_height=10
+let g:ctrlp_working_path_mode = 0
 set wildignore+=*.pyc
-set wildignore+=*_build/*
-set wildignore+=*build/*
-set wildignore+=*/coverage/*
+set wildignore+=*.o
+"set wildignore+=*_build/*
+"set wildignore+=*build/*
+"set wildignore+=*/coverage/*
 
 " settings for flake and pep8
 let g:pyflakes_use_quick_fix=0
@@ -188,6 +188,10 @@ let NERDTreeIgnore = ['\.o$']
 " look for tags in current folder
 " or move to the root until found
 set tags=./tags;/
+
+" ctags open definition in split in vsplit
+map <C-]> :vsp <CR>:exec("tag ".expand("<cword>"))<CR>
+map <C-\> :split <CR>:exec("tag ".expand("<cword>"))<CR>
 
 " imap <buffer><Tab> <M-/>
 "
@@ -233,4 +237,3 @@ set so=1
 let asmsyntax='armasm' 
 let filetype_inc='armasm'
 au BufNewFile,BufRead *.S setlocal ft=armasm
-
