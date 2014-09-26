@@ -3,14 +3,14 @@ echo "--------------------"
 echo "Ganis VIM's settings"
 echo "--------------------"
 echo " "
-echo "Installing .vimrc in your home directory"
-echo " "
+echo "Installing .vimrc in your home directory..."
 echo "set runtimepath+=~/.vim/.vimrc" > ~/.vimrc
 echo "source ~/.vim/.vimrc" >> ~/.vimrc
+echo "done."
 echo " "
 echo "Installing plugins, these are clones from externel git"
-echo "good: your plugins are updated"
-echo "bad: a git may be down, look for alternative git"
+echo "advantage: your plugins are updated"
+echo "disadvantage: a git may be down, look for alternative"
 echo " "
 cd ~/.vim/bundle
 sudo rm ~/.vim/bundle/* -r
@@ -27,7 +27,13 @@ git clone https://github.com/bling/vim-airline
 git clone https://github.com/garbas/vim-snipmate
 git clone https://github.com/honza/vim-snippets
 echo " "
+echo "Installing plugins done."
+echo " "
 echo "update your vim"
 echo "sudo apt-get install vim"
 echo " "
 sudo apt-get install vim
+echo " "
+echo "All installation is done."
+echo "-------------------------"
+echo " "

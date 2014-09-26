@@ -193,10 +193,12 @@ let NERDTreeIgnore = ['\.o$']
 set tags=./tags;/
 
 " ctags open definition in split in vsplit
-map <C-]> :vsplit <CR>:exec("ts ".expand("<cword>"))<CR>
-map <C-\> :split <CR>:exec("ts ".expand("<cword>"))<CR>
+" twice, faster and i used this more often than open in curr
+map <C-]><C-]> :vsplit <CR>:exec("ts ".expand("<cword>"))<CR>
+map <C-\><C-]> :split <CR>:exec("ts ".expand("<cword>"))<CR>
 " open in current
-map <C-}> :e <CR>:exec("ts ".expand("<cword>"))<CR>
+map <C-\> :e <CR>:exec("ts ".expand("<cword>"))<CR>
+map <C-]> :e <CR>:exec("ts ".expand("<cword>"))<CR>
 
 " imap <buffer><Tab> <M-/>
 "
