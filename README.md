@@ -1,15 +1,14 @@
-Ganis VIM plugins and .vimrc
+-----------------------------
+Ganis VIM settings
+-----------------------------
 
-1. put this on ~/.vim/
+'''
+cd ~
+git clone https://github.com/ganiszulfa/.vim.git
+sh ~/.vim/init.sh
+'''
 
-2. create ~/.vimrc and put
+end results:
 
-    set runtimepath+=~/.vim/.vimrc
-
-    source ~/.vim/.vimrc
-
-3. run
-
-    sh ~/.vim/bundle/cloning_scripts.sh
-
-4. (if necessary) update your vim
+- plugins are all downloaded
+- vim is awesome now (according to ganis)
