@@ -2,11 +2,11 @@
 Ganis VIM settings
 -----------------------------
 
-'''
+```
 cd ~
 git clone https://github.com/ganiszulfa/.vim.git
 sh ~/.vim/init.sh
-'''
+```
 
 end results:
 
