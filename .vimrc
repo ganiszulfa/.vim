@@ -2,11 +2,19 @@
 autocmd! bufwritepost .vimrc source %
 
 " pathogen load
-filetype off
+filetyp off
 call pathogen#infect()
 call pathogen#helptags()
 filetype plugin indent on
 syntax on
+
+" set tab completion in vim just like normal bash
+set wildmode=longest,list,full
+set wildmenu
+
+" when you need to make changes to a system file, 
+" override the read-only permissions by typing :w!!
+cmap w!! %!sudo tee > /dev/null %
 
 " Remap leader to comma 
 let mapleader = ","
@@ -151,8 +159,6 @@ set ignorecase
 " " Revert Color to default when leaving Insert Mode
 " autocmd CmdwinLeave * highlight  CursorLine ctermbg=Green ctermfg=None
 
-
-
 " Color scheme
 " set t_Co=256
 colorscheme wombat256mod
@@ -164,15 +170,12 @@ let g:airline_left_sep='>'
 let g:airline_theme='molokai'
 
 " settings for ctrlp
-" cd ~/.vim/bundle
-" git clone https://github.com/kien/ctrlp.vim.git
 let g:ctrlp_max_height=10
 let g:ctrlp_working_path_mode = 0
 set wildignore+=*.pyc
-set wildignore+=*.o
-"set wildignore+=*_build/*
-"set wildignore+=*build/*
-"set wildignore+=*/coverage/*
+set wildignore+=*.o " c object
+set wildignore+=*.bin " binary
+" use  ctlr p + f5 to refresh lsit
 
 " settings for flake and pep8
 let g:pyflakes_use_quick_fix=0
@@ -190,8 +193,10 @@ let NERDTreeIgnore = ['\.o$']
 set tags=./tags;/
 
 " ctags open definition in split in vsplit
-map <C-]> :vsp <CR>:exec("tag ".expand("<cword>"))<CR>
-map <C-\> :split <CR>:exec("tag ".expand("<cword>"))<CR>
+map <C-]> :vsplit <CR>:exec("ts ".expand("<cword>"))<CR>
+map <C-\> :split <CR>:exec("ts ".expand("<cword>"))<CR>
+" open in current
+map <C-}> :e <CR>:exec("ts ".expand("<cword>"))<CR>
 
 " imap <buffer><Tab> <M-/>
 "
