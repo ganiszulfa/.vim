@@ -170,12 +170,20 @@ let g:airline_left_sep='>'
 let g:airline_theme='molokai'
 
 " settings for ctrlp
-let g:ctrlp_max_height=10
+let g:ctrlp_max_height=20
 let g:ctrlp_working_path_mode = 0
-set wildignore+=*.pyc
+let g:ctrlp_max_files = 0
+"let g:ctrlp_by_filename = 1
+let g:ctrlp_regexp = 1
+"
+let g:ctrlp_user_command = ['.git/', 'cd %s && git ls-files --exclude-standard -co']
+"let g:ctrlp_user_command = "find %s -type f | egrep -v '/\.(git|hg|svn)|solr|tmp/' | egrep -v '\.(png|exe|jpg|gif|jar|class|swp|swo|log|gitkep|keepme|so|o)$'"
+
+set wildignore+=*.pyc  " py object
 set wildignore+=*.o " c object
 set wildignore+=*.bin " binary
-" use  ctlr p + f5 to refresh lsit
+
+" use  ctlr p + f5 to refresh list
 
 " settings for flake and pep8
 let g:pyflakes_use_quick_fix=0
@@ -187,6 +195,7 @@ let g:SuperTabDefaultCompletionType = 'context'
 " fixing nerd tree for mac
 let g:NERDTreeDirArrows=0
 let NERDTreeIgnore = ['\.o$']
+let NERDTreeIgnore += ['\.pyc$']
 
 " look for tags in current folder
 " or move to the root until found
