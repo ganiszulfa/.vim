@@ -1,0 +1,13 @@
+^bin/
+^dist/
+^include/
+^lib/
+^man/
+^\.tox/
+/__pycache__/
+\.egg$
+\.egg-info/
+\.Python
+\.orig$
+\.pyc$
+\.swp$
