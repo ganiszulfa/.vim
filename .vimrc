@@ -60,7 +60,8 @@ nnoremap r$ "_d$p
 set cursorline
 
 " folding code
-set foldmethod=indent " for python is indent, for c is syntax
+set foldmethod=syntax "for c is syntax
+autocmd BufNewFile,BufRead *.py set foldmethod=indent "for python is indent
 set foldlevel=0 "autofold starting from
 set foldnestmax=2 "don't auto fold afeter
 nnoremap <space> za
@@ -171,7 +172,6 @@ let g:airline_theme='molokai'
 let g:ctrlp_max_height=20
 let g:ctrlp_working_path_mode = 0
 let g:ctrlp_max_files = 0
-"let g:ctrlp_by_filename = 1
 let g:ctrlp_regexp = 1
 "
 let g:ctrlp_user_command = ['.git/', 'cd %s && git ls-files --exclude-standard -co']
