@@ -16,7 +16,7 @@ set wildmenu
 " override the read-only permissions by typing :w!!
 cmap w!! %!sudo tee > /dev/null %
 
-" Remap leader to comma 
+" Remap leader to comma
 let mapleader = ","
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -60,13 +60,11 @@ nnoremap r$ "_d$p
 set cursorline
 
 " folding code
-set foldmethod=syntax
-set foldlevel=99
-" set foldnestmax=1
+set foldmethod=indent " for python is indent, for c is syntax
+set foldlevel=0 "autofold starting from
+set foldnestmax=2 "don't auto fold afeter
 nnoremap <space> za
 vnoremap <space> zf
-" set folding code for enter
-nnoremap <CR> za
 
 " disable arrow keys
 nnoremap <up> <nop>
