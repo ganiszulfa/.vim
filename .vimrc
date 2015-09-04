@@ -145,8 +145,7 @@ set nowrapscan        " do not wrap around
 " endif
 
 "set relativenumber
-:au FocusLost * :set number
-:au FocusGained * :set relativenumber
+set relativenumber
 
 " Make search insensitive
 set hlsearch
