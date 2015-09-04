@@ -5,7 +5,7 @@ autocmd! bufwritepost .vimrc source %
 filetyp off
 call pathogen#infect()
 call pathogen#helptags()
-filetype plugin indent on
+filetype plugin indent off
 syntax on
 
 " set tab completion in vim just like normal bash
@@ -122,6 +122,8 @@ set expandtab
 set shiftwidth=8
 set softtabstop=8
 
+autocmd FileType python set tabstop=4|set shiftwidth=4|set softtabstop=4|set expandtab
+
 " Disable stupid backup and swap files
 " use git anyway
 set nobackup
@@ -141,6 +143,10 @@ set nowrapscan        " do not wrap around
 " else
     " au BufWinEnter * let w:m2=matchadd('ErrorMsg', '\%>80v.\+', -1)
 " endif
+
+"set relativenumber
+:au FocusLost * :set number
+:au FocusGained * :set relativenumber
 
 " Make search insensitive
 set hlsearch
