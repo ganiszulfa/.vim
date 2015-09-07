@@ -63,9 +63,11 @@ set cursorline
 set foldmethod=syntax "for c is syntax
 autocmd BufNewFile,BufRead *.py set foldmethod=indent "for python is indent
 set foldlevel=0 "autofold starting from
-set foldnestmax=2 "don't auto fold afeter
+set foldnestmax=4 "don't auto fold afeter
 nnoremap <space> za
 vnoremap <space> zf
+" set folding code for enter
+nnoremap <CR> za
 
 " disable arrow keys
 nnoremap <up> <nop>
