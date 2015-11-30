@@ -4,7 +4,7 @@ Ganis VIM settings
 
 ```
 cd ~
-git clone https://github.com/ganiszulfa/.vim.git
+git clone https://github.com/ganiszulfa/.vim.git ~/.vim
 sh ~/.vim/init.sh
 ```
 
