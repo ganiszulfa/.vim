@@ -3,8 +3,7 @@ Ganis VIM settings
 -----------------------------
 
 ```
-git clone https://github.com/ganiszulfa/.vim.git ~/.vim
-sh ~/.vim/init.sh
+git clone https://github.com/ganiszulfa/.vim.git ~/.vim ; sh ~/.vim/init.sh
 ```
 
 end results:
