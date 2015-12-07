@@ -8,10 +8,10 @@ echo "set runtimepath+=~/.vim/.vimrc" > ~/.vimrc
 echo "source ~/.vim/.vimrc" >> ~/.vimrc
 echo "done."
 echo " "
-echo "update your vim"
+echo "update or install vim"
 echo "sudo apt-get install vim"
 echo " "
-sudo apt-get install vim
+sudo apt-get install -y vim
 echo " "
 echo "Installation is done."
 echo "-------------------------"
