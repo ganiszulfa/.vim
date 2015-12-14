@@ -1,6 +1,10 @@
 " autoload vimrc
 autocmd! bufwritepost .vimrc source %
 
+if $COLORTERM == 'gnome-terminal'
+  set t_Co=256
+endif
+
 " pathogen load
 filetyp off
 call pathogen#infect()
