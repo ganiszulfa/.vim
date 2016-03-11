@@ -27,7 +27,7 @@ echo "Changing terminal color..."
 echo "PS1='\[\033[01;33m\]\u@\h\[\033[00m\]:\[\033[01;36m\]\w\[\033[00m\]\$ '" >> ~/.bashrc
 # better dir display in ls
 echo "alias ls=\"ls --color=auto\""  >> ~/.bashrc
-source ~/.bashrc
+bash -c "source ~/.bashrc"
 echo " "
 echo "VIM is finished. Next is tmux..."
 
