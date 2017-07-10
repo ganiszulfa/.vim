@@ -259,3 +259,5 @@ set so=1
 let asmsyntax='armasm' 
 let filetype_inc='armasm'
 au BufNewFile,BufRead *.S setlocal ft=armasm
+
+syn sync fromstart
