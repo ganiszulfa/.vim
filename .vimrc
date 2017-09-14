@@ -6,11 +6,14 @@ if $COLORTERM == 'gnome-terminal'
 endif
 
 " pathogen load
-filetyp off
+filetype off
 call pathogen#infect()
 call pathogen#helptags()
-filetype plugin indent off
+"filetype plugin indent off
+filetype plugin indent on
 syntax on
+
+autocmd BufNewFile,BufRead *.py set filetype=python "for python is indent
 
 " set tab completion in vim just like normal bash
 set wildmode=longest,list,full
@@ -27,9 +30,6 @@ let mapleader = ","
 
 " Return to normal mode on FocustLost
 au FocusLost * call feedkeys("\<C-\>\<C-n>")
-
-" select all
-map <Leader>a ggVG
 
 " Keep search pattern at the center of the screen.
 "nnoremap <silent> n nzz
@@ -48,7 +48,7 @@ nnoremap <silent> g* g*
 " reset search highlight
 noremap <silent>// :nohls<CR>
 
-" disable the of yanking after change, i just don't like it
+" disable the yanking after change, i just don't like it
 nnoremap c "_c
 
 " make r become delete x words/till end of line and change with the latest
@@ -65,6 +65,7 @@ set cursorline
 
 " folding code
 set foldmethod=syntax "for c is syntax
+
 autocmd BufNewFile,BufRead *.py set foldmethod=indent "for python is indent
 set foldlevel=0 "autofold starting from
 set foldnestmax=4 "don't auto fold afeter
@@ -121,14 +122,12 @@ noremap <F1> <Esc>
 " Force Saving Files that Require Root Permission 
 cmap w!! %!sudo tee > /dev/null %
 
-" setting for python, we use spaces instead of TAB
 " changed to linux standard
 set tabstop=8
 set expandtab
 set shiftwidth=8
 set softtabstop=8
 
-autocmd FileType python set tabstop=4|set shiftwidth=4|set softtabstop=4|set expandtab
 
 " Disable stupid backup and swap files
 " use git anyway
@@ -143,12 +142,6 @@ set si
 set smarttab
 set nowrap " dont automatically wrap on load
 set nowrapscan        " do not wrap around
-" set a vertical line in the screen
-" if exists('+colorcolumn')
-    " set colorcolumn=81
-" else
-    " au BufWinEnter * let w:m2=matchadd('ErrorMsg', '\%>80v.\+', -1)
-" endif
 
 "set relativenumber
 set relativenumber
@@ -260,4 +253,26 @@ let asmsyntax='armasm'
 let filetype_inc='armasm'
 au BufNewFile,BufRead *.S setlocal ft=armasm
 
+" to force syntax correction
 syn sync fromstart
+
+" set a vertical line in the screen
+" setting for python, we use spaces instead of TAB
+autocmd FileType python setlocal tabstop=4 shiftwidth=4 softtabstop=4 expandtab
+"autocmd FileType python setlocal colorcolumn=100
+" setting for other commonly used files
+autocmd FileType html setlocal shiftwidth=2 tabstop=2 
+autocmd FileType htmldjango setlocal shiftwidth=2 tabstop=2 
+autocmd FileType javascript setlocal shiftwidth=4 tabstop=4 
+autocmd FileType css setlocal shiftwidth=4 tabstop=4 
+
+let g:html_indent_script1 = "inc"
+let g:html_indent_style1 = "inc"
+let g:html_indent_inctags = "html,body,head,tbody,div,select"
+set smartindent
+ "if exists('+colorcolumn')
+ "set colorcolumn=100
+ "highlight ColorColumn ctermbg=gray
+ "else
+ "au BufWinEnter * let w:m2=matchadd('ErrorMsg', '\%>100v.\+', -1)
+ "endif
