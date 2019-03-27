@@ -67,8 +67,8 @@ set cursorline
 set foldmethod=syntax "for c is syntax
 
 autocmd BufNewFile,BufRead *.py set foldmethod=indent "for python is indent
-set foldlevel=0 "autofold starting from
-set foldnestmax=4 "don't auto fold afeter
+set foldlevel=9 "autofold starting from
+set foldnestmax=9 "don't auto fold afeter
 nnoremap <space> za
 vnoremap <space> zf
 " set folding code for enter
@@ -279,3 +279,31 @@ set smartindent
  "
 " to avoid folding messing up with syntax highlighting
 syn sync fromstart
+
+
+" go things from https://hackernoon.com/my-neovim-setup-for-go-7f7b6e805876
+" 
+let g:go_highlight_build_constraints = 1
+let g:go_highlight_extra_types = 1
+let g:go_highlight_fields = 1
+let g:go_highlight_functions = 1
+let g:go_highlight_methods = 1
+let g:go_highlight_operators = 1
+let g:go_highlight_structs = 1
+let g:go_highlight_types = 1
+let g:go_fmt_command = "goimports"
+
+" Enable integration with airline.
+let g:airline#extensions#ale#enabled = 1
+let g:go_list_type = "quickfix"
+
+" https://github.com/w0rp/ale
+" Error and warning signs.
+let g:ale_sign_error = '>>'
+let g:ale_sign_warning = '--'
+
+" navigate between errors quickly
+nmap <silent> <C-n> <Plug>(ale_next_wrap)
+nmap <silent> <C-p> <Plug>(ale_previous_wrap)
+
+set nofoldenable
