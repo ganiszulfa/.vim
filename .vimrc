@@ -261,10 +261,10 @@ syn sync fromstart
 autocmd FileType python setlocal tabstop=4 shiftwidth=4 softtabstop=4 expandtab
 "autocmd FileType python setlocal colorcolumn=100
 " setting for other commonly used files
-autocmd FileType html setlocal shiftwidth=2 tabstop=2 
-autocmd FileType htmldjango setlocal shiftwidth=2 tabstop=2 
-autocmd FileType javascript setlocal shiftwidth=4 tabstop=4 
-autocmd FileType css setlocal shiftwidth=4 tabstop=4 
+autocmd FileType html setlocal shiftwidth=4 tabstop=4 
+autocmd FileType htmldjango setlocal shiftwidth=4 tabstop=4 
+autocmd FileType javascript setlocal shiftwidth=2 tabstop=2 
+autocmd FileType css setlocal shiftwidth=2 tabstop=2 
 
 let g:html_indent_script1 = "inc"
 let g:html_indent_style1 = "inc"
@@ -291,6 +291,7 @@ let g:go_highlight_methods = 1
 let g:go_highlight_operators = 1
 let g:go_highlight_structs = 1
 let g:go_highlight_types = 1
+
 let g:go_fmt_command = "goimports"
 
 " Enable integration with airline.
@@ -307,3 +308,13 @@ nmap <silent> <C-n> <Plug>(ale_next_wrap)
 nmap <silent> <C-p> <Plug>(ale_previous_wrap)
 
 set nofoldenable
+
+autocmd BufNewFile,BufRead *.html set foldmethod=indent
+autocmd BufNewFile,BufRead *.css set foldmethod=indent
+
+" use 256 colors in terminal
+if !has("gui_running")
+    set t_Co=256
+    set term=screen-256color
+endif
+
