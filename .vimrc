@@ -301,7 +301,7 @@ let g:go_list_type = "quickfix"
 
 " https://github.com/w0rp/ale
 " Error and warning signs.
-let g:ale_sign_error = '>>'
+let g:ale_sign_error = ' '
 let g:ale_sign_warning = ' '
 
 " let g:go_metalinter_enabled = ['golint', 'errcheck']
@@ -322,4 +322,7 @@ if !has("gui_running")
 endif
 
 :hi SpellCap term=reverse ctermbg=16 gui=undercurl 
-:hi SpellBad term=reverse ctermfg=15 ctermbg=5 gui=undercurl 
+:hi SpellBad term=reverse ctermfg=15 ctermbg=197 gui=undercurl 
+:hi Error term=reverse ctermfg=15 ctermbg=197 
+
+:hi Todo term=standout ctermfg=182 ctermbg=239
