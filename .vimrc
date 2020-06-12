@@ -283,6 +283,7 @@ syn sync fromstart
 
 " go things from https://hackernoon.com/my-neovim-setup-for-go-7f7b6e805876
 " 
+" https://github.com/fatih/vim-go/wiki/Tutorial
 let g:go_highlight_build_constraints = 1
 let g:go_highlight_extra_types = 1
 let g:go_highlight_fields = 1
@@ -301,11 +302,13 @@ let g:go_list_type = "quickfix"
 " https://github.com/w0rp/ale
 " Error and warning signs.
 let g:ale_sign_error = '>>'
-let g:ale_sign_warning = '--'
+let g:ale_sign_warning = ' '
+
+" let g:go_metalinter_enabled = ['golint', 'errcheck']
 
 " navigate between errors quickly
 nmap <silent> <C-n> <Plug>(ale_next_wrap)
-nmap <silent> <C-p> <Plug>(ale_previous_wrap)
+"nmap <silent> <C-p> <Plug>(ale_previous_wrap)
 
 set nofoldenable
 
@@ -318,3 +321,5 @@ if !has("gui_running")
     set term=screen-256color
 endif
 
+:hi SpellCap term=reverse ctermbg=16 gui=undercurl 
+:hi SpellBad term=reverse ctermfg=15 ctermbg=5 gui=undercurl 
