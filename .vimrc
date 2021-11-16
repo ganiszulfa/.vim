@@ -252,10 +252,10 @@ syn sync fromstart
 autocmd FileType python setlocal tabstop=4 shiftwidth=4 softtabstop=4 expandtab
 "autocmd FileType python setlocal colorcolumn=100
 " setting for other commonly used files
-autocmd FileType html setlocal shiftwidth=2 tabstop=2 
-autocmd FileType htmldjango setlocal shiftwidth=2 tabstop=2 
-autocmd FileType javascript setlocal shiftwidth=4 tabstop=4 
-autocmd FileType css setlocal shiftwidth=4 tabstop=4 
+autocmd FileType html setlocal shiftwidth=4 tabstop=4 
+autocmd FileType htmldjango setlocal shiftwidth=4 tabstop=4 
+autocmd FileType javascript setlocal shiftwidth=2 tabstop=2 
+autocmd FileType css setlocal shiftwidth=2 tabstop=2 
 
 let g:html_indent_script1 = "inc"
 let g:html_indent_style1 = "inc"
@@ -274,6 +274,7 @@ set smartindent
 
 " go things from https://hackernoon.com/my-neovim-setup-for-go-7f7b6e805876
 " 
+" https://github.com/fatih/vim-go/wiki/Tutorial
 let g:go_highlight_build_constraints = 1
 let g:go_highlight_extra_types = 1
 let g:go_highlight_fields = 1
@@ -289,8 +290,6 @@ let g:go_fmt_command = "goimports"
 let g:airline#extensions#ale#enabled = 1
 let g:go_list_type = "quickfix"
 
-" https://github.com/w0rp/ale
-
 " navigate between errors quickly
 nmap <silent> <C-n> <Plug>(ale_next_wrap)
 
@@ -304,10 +303,35 @@ highlight clear ALEWarningSign
 
 " let g:ale_completion_enabled = 1
 "
-
-
 " Quicksave command
 noremap <C-Z> :update<CR><Esc>
 vnoremap <C-Z> <C-C>:update<CR><Esc>
 inoremap <C-Z> <C-O>:update<CR><Esc>
 
+" https://github.com/w0rp/ale
+" Error and warning signs.
+let g:ale_sign_error = ' '
+let g:ale_sign_warning = ' '
+
+" let g:go_metalinter_enabled = ['golint', 'errcheck']
+
+" navigate between errors quickly
+nmap <silent> <C-n> <Plug>(ale_next_wrap)
+"nmap <silent> <C-p> <Plug>(ale_previous_wrap)
+
+set nofoldenable
+
+autocmd BufNewFile,BufRead *.html set foldmethod=indent
+autocmd BufNewFile,BufRead *.css set foldmethod=indent
+
+" use 256 colors in terminal
+if !has("gui_running")
+    set t_Co=256
+    set term=screen-256color
+endif
+
+:hi SpellCap term=reverse ctermbg=16 gui=undercurl 
+:hi SpellBad term=reverse ctermfg=15 ctermbg=197 gui=undercurl 
+:hi Error term=reverse ctermfg=15 ctermbg=197 
+
+:hi Todo term=standout ctermfg=182 ctermbg=239
