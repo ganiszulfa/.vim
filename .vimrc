@@ -1,10 +1,6 @@
 " autoload vimrc
 autocmd! bufwritepost .vimrc source %
 
-if $COLORTERM == 'gnome-terminal'
-  set t_Co=256
-endif
-
 " pathogen load
 filetype off
 call pathogen#infect()
@@ -83,11 +79,6 @@ inoremap <up> <nop>
 inoremap <down> <nop>
 inoremap <left> <nop>
 inoremap <right> <nop>
-
-" Quicksave command
-noremap <C-Z> :update<CR><Esc>
-vnoremap <C-Z> <C-C>:update<CR><Esc>
-inoremap <C-Z> <C-O>:update<CR><Esc>
 
 " going up and down every 7 lines (more than 
 " that is too much for me)
@@ -277,8 +268,8 @@ set smartindent
  "au BufWinEnter * let w:m2=matchadd('ErrorMsg', '\%>100v.\+', -1)
  "endif
  "
-" to avoid folding messing up with syntax highlighting
-syn sync fromstart
+" to avoid folding messing up with syntax highlighting only in py tho
+" syn sync fromstart
 
 
 " go things from https://hackernoon.com/my-neovim-setup-for-go-7f7b6e805876
@@ -291,6 +282,7 @@ let g:go_highlight_methods = 1
 let g:go_highlight_operators = 1
 let g:go_highlight_structs = 1
 let g:go_highlight_types = 1
+
 let g:go_fmt_command = "goimports"
 
 " Enable integration with airline.
@@ -298,12 +290,24 @@ let g:airline#extensions#ale#enabled = 1
 let g:go_list_type = "quickfix"
 
 " https://github.com/w0rp/ale
-" Error and warning signs.
-let g:ale_sign_error = '>>'
-let g:ale_sign_warning = '--'
 
 " navigate between errors quickly
 nmap <silent> <C-n> <Plug>(ale_next_wrap)
-nmap <silent> <C-p> <Plug>(ale_previous_wrap)
 
-set nofoldenable
+" Error and warning signs.
+let g:ale_sign_error = '>>'
+let g:ale_sign_warning = ' '
+
+
+let g:ale_set_highlights = 0
+highlight clear ALEWarningSign
+
+" let g:ale_completion_enabled = 1
+"
+
+
+" Quicksave command
+noremap <C-Z> :update<CR><Esc>
+vnoremap <C-Z> <C-C>:update<CR><Esc>
+inoremap <C-Z> <C-O>:update<CR><Esc>
+
